@@ -15,10 +15,11 @@ ckeditor = CKEditor(app)
 Bootstrap(app)
 
 ##CONNECT TO DB
-basedir = os.path.abspath(os.path.dirname(__file__))
+# basedir = os.path.abspath(os.path.dirname(__file__))
 ##Connect to Database
 # app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///"+os.path.join(basedir, "instance/blog.db")
-app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///instance/blog.db"
+app.config['SQLALCHEMY_DATABASE_URI']="sqlite:////Users/goremi/Downloads/Blog/instance/blog.db"
+# app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:////instance/blog.db"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
@@ -35,8 +36,8 @@ class BlogPost(db.Model):
     body = db.Column(db.Text, nullable=False)
     img_url = db.Column(db.String(250), nullable=False)
 
-# with app.app_context():
-#     db.create_all()
+with app.app_context():
+    db.create_all()
 
 
 @app.route('/')
