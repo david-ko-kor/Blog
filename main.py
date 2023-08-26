@@ -7,6 +7,7 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import relationship
 from flask_login import UserMixin, login_user, LoginManager, login_required, current_user, logout_user
 from forms import CreatePostForm
+from sqlalchemy import create_engine
 from flask_gravatar import Gravatar
 import os
 app = Flask(__name__)
@@ -18,7 +19,8 @@ Bootstrap(app)
 # basedir = os.path.abspath(os.path.dirname(__file__))
 ##Connect to Database
 # app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///"+os.path.join(basedir, "instance/blog.db")
-app.config['SQLALCHEMY_DATABASE_URI']="sqlite:////Users/goremi/Downloads/Blog/instance/blog.db"
+sqlite_path=app.config['SQLALCHEMY_DATABASE_URI']="sqlite:////Users/goremi/Downloads/Blog/instance/blog.db"
+engine = create_engine(sqlite_path, pool_pre_ping=True)
 # app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:////instance/blog.db"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
