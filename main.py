@@ -32,7 +32,7 @@ db = SQLAlchemy(app)
 
 @app.route('/')
 def home():
-    return render_template('좋냐?')
+    return render_template('index.html')
 ##CONFIGURE TABLES
 
 # class BlogPost(db.Model):
