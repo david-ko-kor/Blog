@@ -20,7 +20,7 @@ Bootstrap(app)
 ##Connect to Database
 # app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///"+os.path.join(basedir, "instance/blog.db")
 sqlite_path=app.config['SQLALCHEMY_DATABASE_URI']="sqlite:////Users/goremi/Downloads/Blog/instance/blog.db"
-engine = create_engine(sqlite_path, pool_pre_ping=True)
+engine = create_engine(sqlite_path, echo=True)
 # app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:////instance/blog.db"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
