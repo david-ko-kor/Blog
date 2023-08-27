@@ -12,7 +12,9 @@ from wtforms.validators import DataRequired, URL
 from flask_ckeditor import CKEditorField
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
-from flask_gravatar import Gravatar
+from dotenv import load_dotenv
+load_dotenv()
+
 import os
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
@@ -23,7 +25,9 @@ Bootstrap(app)
 # basedir = os.path.abspath(os.path.dirname(__file__))
 ##Connect to Database
 # app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///"+os.path.join(basedir, "instance/blog.db")
-app.config['SQLALCHEMY_DATABASE_URI']="sqlite:////Users/goremi/Downloads/Blog/instance/blog.db"
+# app.config['SQLALCHEMY_DATABASE_URI']="sqlite:////Users/goremi/Downloads/Blog/instance/blog.db"
+app.config['SQLALCHEMY_DATABASE_URI']=os.environ.get('DATA')
+
 # app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:////instance/blog.db"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
