@@ -79,7 +79,7 @@ def contact():
     return render_template("contact.html")
 
 
-@app.route("/new-post")
+@app.route("/new-post",methods=['GET','POST'])
 def add_new_post():
     form = CreatePostForm()
     if form.validate_on_submit():
@@ -100,6 +100,7 @@ def add_new_post():
 @app.route("/edit-post/<int:post_id>")
 def edit_post(post_id):
     post = BlogPost.query.get(post_id)
+
     edit_form = CreatePostForm(
         title=post.title,
         subtitle=post.subtitle,
