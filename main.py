@@ -88,7 +88,7 @@ def add_new_post():
             subtitle=form.subtitle.data,
             body=form.body.data,
             img_url=form.img_url.data,
-            author=current_user,
+            author='고규형',
             date=date.today().strftime("%B %d, %Y")
         )
         db.session.add(new_post)
